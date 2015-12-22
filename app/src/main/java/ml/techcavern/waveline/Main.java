@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -26,15 +27,11 @@ public class Main extends AppCompatActivity {
         final TextView weatherText = (TextView) findViewById(R.id.weatherText);
 
         final EditText weatherInput = (EditText) findViewById(R.id.weatherInput);
-        weatherInput.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View view, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+        weatherInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_DONE){
                     try {
                         weatherText.setText(InfoUtils.getWeather(weatherInput.getText().toString()));
-                        int visiblity = weatherInput.getVisibility();
-                        weatherInput.setVisibility(View.GONE);
-                        weatherInput.setVisibility(visiblity);
-
                     }catch (Exception e){
                         weatherText.setText("Invalid Zip Code");
                     }
