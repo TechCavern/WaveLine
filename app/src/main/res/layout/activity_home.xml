@@ -37,6 +37,7 @@
             android:layout_marginTop="20dp"
             android:hint="Zip Code"
             android:inputType="number"
+            android:imeActionId="@integer/action_find"
             android:imeActionLabel="Find" />
         <TextView
             android:layout_marginTop="60dp"

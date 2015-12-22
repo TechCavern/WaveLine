@@ -28,8 +28,9 @@ public class Main extends AppCompatActivity {
 
         final EditText weatherInput = (EditText) findViewById(R.id.weatherInput);
         weatherInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
             public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
-                if(actionId == EditorInfo.IME_ACTION_DONE){
+                if(actionId == getResources().getInteger(R.integer.action_find) || actionId == EditorInfo.IME_ACTION_DONE){
                     try {
                         weatherText.setText(InfoUtils.getWeather(weatherInput.getText().toString()));
                     }catch (Exception e){
