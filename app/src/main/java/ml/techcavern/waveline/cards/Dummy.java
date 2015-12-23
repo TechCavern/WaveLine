@@ -15,7 +15,6 @@ public class Dummy {
         header2.setTitle("Angry bird 2: ");
         card.setTitle("sample title 2");
         card.addCardHeader(header2);
-        card.setType(2);
         return card;
     }
 }
