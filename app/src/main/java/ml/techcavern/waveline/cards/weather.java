@@ -11,13 +11,13 @@ import android.widget.TextView;
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardHeader;
 import ml.techcavern.waveline.R;
-import ml.techcavern.waveline.annots.LCard;
 import ml.techcavern.waveline.utils.InfoUtils;
 
 /**
  * Created by jzhou on 12/22/2015.
  */
-@LCard
+
+
 public class Weather extends Card {
     protected TextView weatherText;
     protected EditText weatherInput;
