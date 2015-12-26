@@ -4,13 +4,10 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 
-import java.util.ArrayList;
-
-import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
 import it.gmariotti.cardslib.library.view.CardListView;
-import ml.techcavern.waveline.cards.Dummy;
-import ml.techcavern.waveline.cards.Weather;
+import ml.techcavern.waveline.utils.LoadUtils;
+import ml.techcavern.waveline.utils.Registry;
 
 
 public class Main extends AppCompatActivity {
@@ -22,10 +19,8 @@ public class Main extends AppCompatActivity {
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_home);
-        ArrayList<Card> cards = new ArrayList<Card>();
-        cards.add(Weather.createCard(this));
-        cards.add(Dummy.createCard(this));
-        CardArrayAdapter cardAdapter = new CardArrayAdapter(this, cards);
+        LoadUtils.registerCards(this);
+        CardArrayAdapter cardAdapter = new CardArrayAdapter(this, Registry.cardList);
         CardListView listView = (CardListView) this.findViewById(R.id.cards);
         if (listView != null) {
             listView.setAdapter(cardAdapter);
