@@ -1,22 +1,26 @@
 package ml.techcavern.waveline.utils;
 
-        import com.google.gson.JsonArray;
-        import com.google.gson.JsonElement;
-        import com.google.gson.JsonObject;
-        import com.google.gson.JsonParser;
-        import org.apache.commons.lang3.StringUtils;
-        import org.jsoup.Jsoup;
-        import org.jsoup.nodes.Document;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
-        import java.io.BufferedReader;
-        import java.io.InputStream;
-        import java.io.InputStreamReader;
-        import java.io.OutputStream;
-        import java.net.URL;
-        import java.net.URLConnection;
-        import java.util.Calendar;
-        import java.util.Locale;
-        import java.util.TimeZone;
+import org.apache.commons.lang3.StringUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class GeneralUtils {
     public static String buildMessage(int startint, int finishint, String[] args) {
@@ -213,6 +217,29 @@ public class GeneralUtils {
         return htmltext.replaceAll("(?s)<[^>]*>(\\s*<[^>]*>)*", " ").replaceAll("\\[.*\\]", "").trim().replaceAll(" +", " ").replaceAll(" ,", "").replaceAll(" \\.", "").replaceAll("\n", " ").replaceAll("\r", " ");
     }
 
+    public static String getIP(String input) {
+        input = input.replaceAll("http://|https://", "");
+        try {
+            InetAddress[] addarray = InetAddress.getAllByName(input);
+            String add = "";
+            for (InetAddress add6 : addarray) {
+                if (add6 instanceof Inet6Address)
+                    add = add6.getHostAddress();
+            }
+            if (add != null)
+                return add;
+            for (InetAddress add4 : addarray) {
+                if (add4 instanceof Inet4Address)
+                    add = add4.getHostAddress();
+            }
+            return add;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
+
+
 
 

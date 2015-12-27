@@ -1,6 +1,7 @@
 package ml.techcavern.waveline.cards;
 
 import android.content.Context;
+import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,7 @@ public class Weather extends Card {
     protected int action_find;
 
     public Weather(Context context) {
-        super(context, R.layout.weather_card);
+        super(context, R.layout.oneline_input_card);
         init();
     }
 
@@ -36,9 +37,10 @@ public class Weather extends Card {
 
     @Override
     public void setupInnerViewElements(ViewGroup parent, View view) {
-        weatherText = (TextView) parent.findViewById(R.id.weatherText);
-
-        weatherInput = (EditText) parent.findViewById(R.id.weatherInput);
+        weatherText = (TextView) parent.findViewById(R.id.onelineText);
+        weatherInput = (EditText) parent.findViewById(R.id.onelineInput);
+        weatherInput.setHint("Zip Code");
+        weatherInput.setInputType(InputType.TYPE_CLASS_NUMBER);
         action_find = parent.getResources().getInteger(R.integer.action_find);
         weatherInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

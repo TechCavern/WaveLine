@@ -6,15 +6,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin">
 <EditText
-android:id="@+id/weatherInput"
+    android:id="@+id/onelineInput"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
-android:hint="Zip Code"
 android:imeActionId="@integer/action_find"
-    android:imeActionLabel="Find"
-    android:inputType="number" />
+    android:imeActionLabel="Find" />
 <TextView
-android:id="@+id/weatherText"
+    android:id="@+id/onelineText"
 android:layout_width="match_parent"
 android:layout_height="wrap_content" />
 </LinearLayout>

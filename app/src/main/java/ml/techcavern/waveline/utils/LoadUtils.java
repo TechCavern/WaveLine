@@ -2,6 +2,7 @@ package ml.techcavern.waveline.utils;
 
 import android.content.Context;
 
+import ml.techcavern.waveline.cards.GeoIP;
 import ml.techcavern.waveline.cards.Weather;
 
 /**
@@ -10,6 +11,6 @@ import ml.techcavern.waveline.cards.Weather;
 public class LoadUtils {
     public static void registerCards(Context context) {
         Registry.cardList.add(new Weather(context));
-
+        Registry.cardList.add(new GeoIP(context));
     }
 }
