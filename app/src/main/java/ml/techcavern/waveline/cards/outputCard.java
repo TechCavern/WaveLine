@@ -1,48 +1,43 @@
 package ml.techcavern.waveline.cards;
 
 import android.content.Context;
-import android.text.InputType;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import com.google.gson.JsonObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardHeader;
 import ml.techcavern.waveline.R;
-import ml.techcavern.waveline.utils.GeneralUtils;
 
 /**
  * Created by jzhou on 12/22/2015.
  */
 
 
-public class GeoIP extends Card {
+public class outputCard extends Card {
     protected TextView geoText;
-    protected EditText geoInput;
-    protected int action_find;
+    protected String outputText;
+    protected String title;
 
-    public GeoIP(Context context) {
-        super(context, R.layout.oneline_input_card);
+    public outputCard(Context context, String Title, String OutputText) {
+        super(context, R.layout.oneline_output_card);
+        this.outputText = OutputText;
+        this.title = Title;
         init();
     }
 
     public void init() {
         CardHeader header = new CardHeader(getContext());
-        header.setTitle("GeoIP ");
+        header.setTitle(this.title);
         this.addCardHeader(header);
     }
 
     @Override
     public void setupInnerViewElements(ViewGroup parent, View view) {
         geoText = (TextView) parent.findViewById(R.id.onelineText);
+        geoText.setText(this.outputText);
+
+        /**
         geoInput = (EditText) parent.findViewById(R.id.onelineInput);
         geoInput.setHint("IP/Domain");
         geoInput.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -54,7 +49,6 @@ public class GeoIP extends Card {
                     try {
                         String IP = GeneralUtils.getIP(geoInput.getText().toString());
                         if (IP == null) {
-                            geoText.setText("Unable to determine location (or you entered an invalid ip)");
                         } else {
                             JsonObject objectJson = GeneralUtils.getJsonObject("http://ip-api.com/json/" + IP);
                             List<String> results = new ArrayList<>();
@@ -93,5 +87,6 @@ public class GeoIP extends Card {
                 return false;
             }
         });
+         **/
     }
 }
