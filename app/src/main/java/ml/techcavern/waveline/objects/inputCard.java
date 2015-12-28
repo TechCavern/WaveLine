@@ -1,4 +1,4 @@
-package ml.techcavern.waveline.cards;
+package ml.techcavern.waveline.objects;
 
 import android.content.Context;
 import android.text.InputType;
@@ -9,10 +9,12 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
+
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardHeader;
 import ml.techcavern.waveline.R;
-import ml.techcavern.waveline.utils.InfoUtils;
 import ml.techcavern.waveline.utils.Registry;
 
 /**
@@ -20,33 +22,34 @@ import ml.techcavern.waveline.utils.Registry;
  */
 
 
-public class inputCard extends Card {
-    protected EditText weatherInput;
+public class InputCard extends Card {
+    protected EditText inputText;
     protected int action_find;
 
-    public inputCard(Context context) {
+    public InputCard(Context context) {
         super(context, R.layout.oneline_input_card);
         init();
     }
 
     public void init() {
         CardHeader header = new CardHeader(getContext());
-        header.setTitle("inputCard ");
+        header.setTitle("InputCard ");
         this.addCardHeader(header);
     }
 
     @Override
     public void setupInnerViewElements(final ViewGroup parent, View view) {
-        weatherInput = (EditText) parent.findViewById(R.id.onelineInput);
-        weatherInput.setHint("Zip Code");
-        weatherInput.setInputType(InputType.TYPE_CLASS_TEXT);
+        inputText = (EditText) parent.findViewById(R.id.onelineInput);
+        inputText.setHint("Command");
+        inputText.setInputType(InputType.TYPE_CLASS_TEXT);
         action_find = parent.getResources().getInteger(R.integer.action_find);
-        weatherInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        inputText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
                 if (actionId == action_find || actionId == EditorInfo.IME_ACTION_DONE) {
                     try {
-                        Registry.cardList.add(new outputCard(parent.getContext(), "Weather", InfoUtils.getWeather(weatherInput.getText().toString())));
+                        String[] message = StringUtils.split(inputText.getText().toString());
+                        Registry.commands.get(message[0]).onCommand(view.getContext(), ArrayUtils.remove(message, 0));
                         parent.setVisibility(View.GONE);
                         parent.setVisibility(View.VISIBLE);
                     } catch (Exception e) {
@@ -57,9 +60,5 @@ public class inputCard extends Card {
                 return false;
             }
         });
-        /**
-         weatherText = (TextView) parent.findViewById(R.id.onelineText);
-
-         **/
     }
 }
