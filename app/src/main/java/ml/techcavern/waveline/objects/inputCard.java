@@ -33,7 +33,7 @@ public class InputCard extends Card {
 
     public void init() {
         CardHeader header = new CardHeader(getContext());
-        header.setTitle("InputCard ");
+        header.setTitle("Insert Command ");
         this.addCardHeader(header);
     }
 
