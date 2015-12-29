@@ -226,7 +226,7 @@ public class GeneralUtils {
                 if (add6 instanceof Inet6Address)
                     add = add6.getHostAddress();
             }
-            if (add != null)
+            if (add != null && !add.isEmpty())
                 return add;
             for (InetAddress add4 : addarray) {
                 if (add4 instanceof Inet4Address)

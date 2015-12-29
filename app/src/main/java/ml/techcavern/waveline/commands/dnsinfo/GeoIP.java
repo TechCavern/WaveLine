@@ -21,15 +21,15 @@ import ml.techcavern.waveline.utils.Registry;
 public class GeoIP extends Command {
 
     public GeoIP() {
-        super(GeneralUtils.toArray("findip locate fip find loc geo geoip"), "findip (+)(IP)(domain)(user)", "GeoIPs a user");
+        super(GeneralUtils.toArray("findip locate fip find loc geo geoip"), "findip (+)(IP)(domain)", "GeoIPs a user");
     }
 
     @Override
     public void onCommand(Context context, String[] args) throws Exception {
         String IP = args[0];
         IP = GeneralUtils.getIP(IP);
-        if (IP == null) {
-            Registry.cardList.add(new OutputCard(context, "Invalid", "Invalid IP"));
+        if (IP == null || IP.isEmpty()) {
+            Registry.cardList.add(new OutputCard(context, "Invalid", "Invalid IP/Domain"));
             return;
         }
         JsonObject objectJson = GeneralUtils.getJsonObject("http://ip-api.com/json/" + IP);
@@ -52,13 +52,13 @@ public class GeoIP extends Command {
                 }
             }
             if (!message.isEmpty()) {
-                Registry.cardList.add(new OutputCard(context, "IP", message));
+                Registry.cardList.add(new OutputCard(context, IP, message));
             } else {
 
-                Registry.cardList.add(new OutputCard(context, "Error", "Unable to determine location (or you entered an invalid ip)"));
+                Registry.cardList.add(new OutputCard(context, "Error", "Unable to determine location (or you entered an invalid IP/Domain)"));
             }
         } else {
-            Registry.cardList.add(new OutputCard(context, "Error", "Unable to determine location (or you entered an invalid ip)"));
+            Registry.cardList.add(new OutputCard(context, "Error", "Unable to determine location (or you entered an invalid IP/Domain)"));
         }
 
 

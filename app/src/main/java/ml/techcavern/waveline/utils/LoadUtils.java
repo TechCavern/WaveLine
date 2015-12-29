@@ -1,8 +1,7 @@
 package ml.techcavern.waveline.utils;
 
-import java.util.Set;
-
-import ml.techcavern.waveline.annots.CMD;
+import ml.techcavern.waveline.commands.dnsinfo.GeoIP;
+import ml.techcavern.waveline.commands.reference.Weather;
 import ml.techcavern.waveline.objects.Command;
 
 /**
@@ -10,18 +9,26 @@ import ml.techcavern.waveline.objects.Command;
  */
 public class LoadUtils {
     public static void registerCommands() {
+        /**
         Set<Class<?>> classes = Registry.wavelineReflection.getTypesAnnotatedWith(CMD.class);
         for (Class<?> clss : classes) {
             try {
                 Command command = (Command) clss.newInstance();
-                Registry.commandList.add(command);
-                String[] comids = command.getCommandID();
-                for (String comid : comids) {
-                    Registry.commands.put(comid, command);
-                }
+         registerCommand(cmd)
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+         **/
+        registerCommand(new Weather());
+        registerCommand(new GeoIP());
+    }
+
+    public static void registerCommand(Command cmd) {
+        Registry.commandList.add(cmd);
+        String[] comids = cmd.getCommandID();
+        for (String comid : comids) {
+            Registry.commands.put(comid, cmd);
         }
     }
 }
