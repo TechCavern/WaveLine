@@ -12,7 +12,6 @@ import ml.techcavern.waveline.annots.CMD;
 import ml.techcavern.waveline.objects.Command;
 import ml.techcavern.waveline.objects.OutputCard;
 import ml.techcavern.waveline.utils.GeneralUtils;
-import ml.techcavern.waveline.utils.Registry;
 
 @CMD
     public class Weather extends Command {
@@ -30,9 +29,9 @@ import ml.techcavern.waveline.utils.Registry;
                 String Temp = weather.get("temperature_string").getAsString();
                 String Humidity = weather.get("relative_humidity").getAsString() + " humidity";
                 String Wind = weather.get("wind_string").getAsString();
-                Registry.cardList.add(new OutputCard(context, City, Weather + " - " + Temp + " - " + Humidity + " - " + Wind));
+                GeneralUtils.addCard(new OutputCard(context, City, Weather + " - " + Temp + " - " + Humidity + " - " + Wind));
             }else{
-                Registry.cardList.add(new OutputCard(context, "Invalid City/Zip Code", "Invalid City/Zip Code"));
+                GeneralUtils.addCard(new OutputCard(context, "Invalid City/Zip Code", "Invalid City/Zip Code"));
             }
         }
 

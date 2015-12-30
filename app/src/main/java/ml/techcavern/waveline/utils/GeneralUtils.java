@@ -22,6 +22,8 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import ml.techcavern.waveline.objects.OutputCard;
+
 public class GeneralUtils {
     public static String buildMessage(int startint, int finishint, String[] args) {
         String message = "";
@@ -237,6 +239,10 @@ public class GeneralUtils {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static void addCard(OutputCard card) {
+        Registry.cardList.add(1, card);
     }
 }
 

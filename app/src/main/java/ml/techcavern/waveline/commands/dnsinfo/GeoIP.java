@@ -52,15 +52,14 @@ public class GeoIP extends Command {
                 }
             }
             if (!message.isEmpty()) {
-                Registry.cardList.add(new OutputCard(context, IP, message));
+                GeneralUtils.addCard(new OutputCard(context, IP, message));
             } else {
 
-                Registry.cardList.add(new OutputCard(context, "Error", "Unable to determine location (or you entered an invalid IP/Domain)"));
+                GeneralUtils.addCard(new OutputCard(context, "Error", "Unable to determine location (or you entered an invalid IP/Domain)"));
             }
         } else {
-            Registry.cardList.add(new OutputCard(context, "Error", "Unable to determine location (or you entered an invalid IP/Domain)"));
+            GeneralUtils.addCard(new OutputCard(context, "Error", "Unable to determine location (or you entered an invalid IP/Domain)"));
         }
-
 
     }
 }

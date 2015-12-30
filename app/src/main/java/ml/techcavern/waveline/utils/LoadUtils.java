@@ -16,7 +16,7 @@ public class LoadUtils {
                 Command command = (Command) clss.newInstance();
          registerCommand(cmd)
             } catch (Exception e) {
-                e.printStackTrace();
+         e.printStackTrace()
             }
         }
          **/
