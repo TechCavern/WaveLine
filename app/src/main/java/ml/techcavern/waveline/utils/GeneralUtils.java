@@ -216,7 +216,7 @@ public class GeneralUtils {
     }
 
     public static String stripHTML(String htmltext) {
-        return htmltext.replaceAll("(?s)<[^>]*>(\\s*<[^>]*>)*", " ").replaceAll("\\[.*\\]", "").trim().replaceAll(" +", " ").replaceAll(" ,", "").replaceAll(" \\.", "").replaceAll("\n", " ").replaceAll("\r", " ");
+        return htmltext.replaceAll("(?s)<[^>]*>(\\s*<[^>]*>)*", " ").replaceAll("\\&.*;", "").replaceAll("\\[.*\\]", "").trim().replaceAll(" +", " ").replaceAll(" ,", "").replaceAll(" \\.", "").replaceAll("\n", " ").replaceAll("\r", " ");
     }
 
     public static String getIP(String input) {

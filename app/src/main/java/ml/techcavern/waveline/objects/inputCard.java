@@ -9,7 +9,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import it.gmariotti.cardslib.library.internal.Card;
@@ -49,7 +48,7 @@ public class InputCard extends Card {
                 if (actionId == action_find || actionId == EditorInfo.IME_ACTION_DONE) {
                     try {
                         String[] message = StringUtils.split(inputText.getText().toString());
-                        Registry.commands.get(message[0]).onCommand(view.getContext(), ArrayUtils.remove(message, 0));
+                        Registry.commands.get(message[0]).onCommand(view.getContext(),message);
                         parent.setVisibility(View.GONE);
                         parent.setVisibility(View.VISIBLE);
                         //        parent.recre

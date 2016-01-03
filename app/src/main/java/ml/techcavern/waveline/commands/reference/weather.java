@@ -22,7 +22,7 @@ import ml.techcavern.waveline.utils.GeneralUtils;
 
         @Override
         public void onCommand(Context context, String[] args) throws Exception {
-            JsonObject weather = GeneralUtils.getJsonObject("http://api.wunderground.com/api/c8e3fc38bfc8400c/conditions/q/" + args[0] + ".json").getAsJsonObject("current_observation");
+            JsonObject weather = GeneralUtils.getJsonObject("http://api.wunderground.com/api/c8e3fc38bfc8400c/conditions/q/" + args[1] + ".json").getAsJsonObject("current_observation");
             if (weather != null) {
                 String City = weather.get("display_location").getAsJsonObject().get("full").getAsString();
                 String Weather = weather.get("weather").getAsString();

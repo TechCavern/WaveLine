@@ -2,6 +2,7 @@ package ml.techcavern.waveline.utils;
 
 import ml.techcavern.waveline.commands.dnsinfo.GeoIP;
 import ml.techcavern.waveline.commands.reference.Weather;
+import ml.techcavern.waveline.commands.reference.Wiki;
 import ml.techcavern.waveline.objects.Command;
 
 /**
@@ -22,6 +23,7 @@ public class LoadUtils {
          **/
         registerCommand(new Weather());
         registerCommand(new GeoIP());
+        registerCommand(new Wiki());
     }
 
     public static void registerCommand(Command cmd) {

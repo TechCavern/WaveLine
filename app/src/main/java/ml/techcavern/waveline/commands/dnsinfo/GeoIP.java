@@ -26,7 +26,7 @@ public class GeoIP extends Command {
 
     @Override
     public void onCommand(Context context, String[] args) throws Exception {
-        String IP = args[0];
+        String IP = args[1];
         IP = GeneralUtils.getIP(IP);
         if (IP == null || IP.isEmpty()) {
             Registry.cardList.add(new OutputCard(context, "Invalid", "Invalid IP/Domain"));
