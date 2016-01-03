@@ -3,10 +3,9 @@ package ml.techcavern.waveline;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 
-import it.gmariotti.cardslib.library.recyclerview.internal.CardArrayRecyclerViewAdapter;
-import it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView;
+import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
+import it.gmariotti.cardslib.library.view.CardListView;
 import ml.techcavern.waveline.objects.InputCard;
 import ml.techcavern.waveline.utils.LoadUtils;
 import ml.techcavern.waveline.utils.Registry;
@@ -22,12 +21,12 @@ public class Main extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_home);
         Registry.cardList.add(new InputCard(this));
-        CardArrayRecyclerViewAdapter cardAdapter = new CardArrayRecyclerViewAdapter(this, Registry.cardList);
-        CardRecyclerView listView = (CardRecyclerView) this.findViewById(R.id.cards);
-        listView.setHasFixedSize(false);
-        listView.setLayoutManager(new LinearLayoutManager(this));
-        if (listView != null) {
-            listView.setAdapter(cardAdapter);
+        CardArrayAdapter cardAdapter = new CardArrayAdapter(this, Registry.cardList);
+        Registry.listView = (CardListView) this.findViewById(R.id.cards);
+        //      Registry.listView.setHasFixedSize(false);
+        //    Registry.listView.setLayoutManager(new LinearLayoutManager(this));
+        if (Registry.listView != null) {
+            Registry.listView.setAdapter(cardAdapter);
         }
         LoadUtils.registerCommands();
     }

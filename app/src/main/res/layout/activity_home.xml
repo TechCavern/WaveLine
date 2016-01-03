@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Main">
 
-    <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
+    <it.gmariotti.cardslib.library.view.CardListView
         android:id="@+id/cards"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

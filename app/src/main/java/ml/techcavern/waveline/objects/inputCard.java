@@ -52,6 +52,10 @@ public class InputCard extends Card {
                         Registry.commands.get(message[0]).onCommand(view.getContext(), ArrayUtils.remove(message, 0));
                         parent.setVisibility(View.GONE);
                         parent.setVisibility(View.VISIBLE);
+                        //        parent.recre
+                        //        parent.refreshDrawableState();
+                        //            Registry.listView.setVisibility(View.GONE);
+                        //              Registry.listView.setVisibility(View.VISIBLE);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
