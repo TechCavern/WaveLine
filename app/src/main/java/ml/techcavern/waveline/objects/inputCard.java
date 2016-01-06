@@ -49,12 +49,9 @@ public class InputCard extends Card {
                     try {
                         String[] message = StringUtils.split(inputText.getText().toString());
                         Registry.commands.get(message[0]).onCommand(view.getContext(),message);
-                        parent.setVisibility(View.GONE);
-                        parent.setVisibility(View.VISIBLE);
-                        //        parent.recre
-                        //        parent.refreshDrawableState();
-                        //            Registry.listView.setVisibility(View.GONE);
-                        //              Registry.listView.setVisibility(View.VISIBLE);
+                        inputText.setText("");
+                        Registry.listView.setVisibility(View.GONE);
+                        Registry.listView.setVisibility(View.VISIBLE);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
