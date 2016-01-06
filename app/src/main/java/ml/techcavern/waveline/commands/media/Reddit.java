@@ -27,6 +27,11 @@ public class Reddit extends Command {
     public void onCommand(Context context, String[] args) throws Exception {
         JsonArray results = GeneralUtils.getJsonObject("http://api.reddit.com/r/" + args[1] + "/?limit=25").get("data").getAsJsonObject().get("children").getAsJsonArray();
         JsonObject result = results.get(new Random().nextInt(results.size() - 1)).getAsJsonObject().get("data").getAsJsonObject();
-        GeneralUtils.addCard(new OutputCard(context, result.get("title").getAsString() + " by " + result.get("author").getAsString(), result.get("selftext").getAsString() + " - " + result.get("url").getAsString()));
+        String selftext = result.get("selftext").getAsString();
+        if (selftext.isEmpty() || selftext == null)
+            GeneralUtils.addCard(new OutputCard(context, result.get("title").getAsString() + " by " + result.get("author").getAsString(), result.get("url").getAsString()));
+        else
+            GeneralUtils.addCard(new OutputCard(context, result.get("title").getAsString() + " by " + result.get("author").getAsString(), selftext + "\n\n" + result.get("url").getAsString()));
+
     }
 }

@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardHeader;
 import ml.techcavern.waveline.R;
+import ml.techcavern.waveline.utils.GeneralUtils;
 import ml.techcavern.waveline.utils.Registry;
 
 /**
@@ -48,13 +49,22 @@ public class InputCard extends Card {
                 if (actionId == action_find || actionId == EditorInfo.IME_ACTION_DONE) {
                     try {
                         String[] message = StringUtils.split(inputText.getText().toString());
-                        Registry.commands.get(message[0]).onCommand(view.getContext(),message);
-                        inputText.setText("");
-                        Registry.listView.setVisibility(View.GONE);
-                        Registry.listView.setVisibility(View.VISIBLE);
+                        Command cmd = Registry.commands.get(message[0]);
+                        try {
+                            cmd.onCommand(view.getContext(), message);
+
+                        } catch (Exception e) {
+                            GeneralUtils.addCard(new OutputCard(view.getContext(), "An Error Occured", "Please ensure you are following the syntax: " + cmd.getSyntax()));
+
+                        }
                     } catch (Exception e) {
+                        GeneralUtils.addCard(new OutputCard(view.getContext(), "Invalid Command", "Invalid Command"));
+
                         e.printStackTrace();
                     }
+                    inputText.setText("");
+                    Registry.listView.setVisibility(View.GONE);
+                    Registry.listView.setVisibility(View.VISIBLE);
                     return true;
                 }
                 return false;
