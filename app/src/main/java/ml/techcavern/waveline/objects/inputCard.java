@@ -54,7 +54,7 @@ public class InputCard extends Card {
                             cmd.onCommand(view.getContext(), message);
 
                         } catch (Exception e) {
-                            GeneralUtils.addCard(new OutputCard(view.getContext(), "An Error Occured", "Please ensure you are following the syntax: " + cmd.getSyntax()));
+                            GeneralUtils.addCard(new OutputCard(view.getContext(), "An Error Occurred", "Please ensure you are following the syntax: " + cmd.getSyntax()));
 
                         }
                     } catch (Exception e) {

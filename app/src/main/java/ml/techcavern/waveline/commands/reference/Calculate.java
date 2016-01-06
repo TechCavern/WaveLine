@@ -28,8 +28,6 @@ public class Calculate extends Command {
         ExpressionBuilder expr = new ExpressionBuilder(args[0]);
         String answer = Double.toString(expr.build().evaluate());
         GeneralUtils.addCard(new OutputCard(context, args[0], answer));
-        //      GeneralUtils.addCard(new OutputCard(context, "moo","moo2"));
-
     }
 
 }
