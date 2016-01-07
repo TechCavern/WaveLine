@@ -3,6 +3,7 @@ package ml.techcavern.waveline.utils;
 import ml.techcavern.waveline.commands.dnsinfo.GeoIP;
 import ml.techcavern.waveline.commands.media.Reddit;
 import ml.techcavern.waveline.commands.reference.Calculate;
+import ml.techcavern.waveline.commands.reference.Define;
 import ml.techcavern.waveline.commands.reference.Question;
 import ml.techcavern.waveline.commands.reference.Weather;
 import ml.techcavern.waveline.commands.reference.Wiki;
@@ -30,6 +31,7 @@ public class LoadUtils {
         registerCommand(new Calculate());
         registerCommand(new Question());
         registerCommand(new Reddit());
+        registerCommand(new Define());
     }
 
     public static void registerCommand(Command cmd) {

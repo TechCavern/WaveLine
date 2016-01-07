@@ -43,6 +43,7 @@ dependencies {
     compile 'org.jsoup:jsoup:1.7.3'
     compile 'org.reflections:reflections:0.9.9'
     compile 'net.objecthunter:exp4j:0.4.0.ALPHA-3'
+    compile 'com.wordnik:wordnik-java-client:1.0.0'
     compile 'jp.freepress.repo:WolframAlpha:1.1'
     compile 'com.github.gabrielemariotti.cards:cardslib-recyclerview:2.1.0'
     compile 'com.github.gabrielemariotti.cards:cardslib-core:2.1.0'
