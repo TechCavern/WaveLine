@@ -2,6 +2,7 @@ package ml.techcavern.waveline.utils;
 
 import ml.techcavern.waveline.commands.dnsinfo.GeoIP;
 import ml.techcavern.waveline.commands.fun.FMyLife;
+import ml.techcavern.waveline.commands.fun.UrbanDictionary;
 import ml.techcavern.waveline.commands.media.Reddit;
 import ml.techcavern.waveline.commands.reference.Calculate;
 import ml.techcavern.waveline.commands.reference.Define;
@@ -36,6 +37,7 @@ public class LoadUtils {
         registerCommand(new Define());
         registerCommand(new FMyLife());
         registerCommand(new Search());
+        registerCommand(new UrbanDictionary());
     }
 
     public static void registerCommand(Command cmd) {
