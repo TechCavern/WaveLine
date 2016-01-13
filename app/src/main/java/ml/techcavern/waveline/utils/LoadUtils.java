@@ -4,6 +4,7 @@ import ml.techcavern.waveline.commands.dnsinfo.GeoIP;
 import ml.techcavern.waveline.commands.fun.FMyLife;
 import ml.techcavern.waveline.commands.fun.UrbanDictionary;
 import ml.techcavern.waveline.commands.media.Reddit;
+import ml.techcavern.waveline.commands.minecraft.MCStatus;
 import ml.techcavern.waveline.commands.reference.Calculate;
 import ml.techcavern.waveline.commands.reference.Define;
 import ml.techcavern.waveline.commands.reference.Question;
@@ -38,6 +39,7 @@ public class LoadUtils {
         registerCommand(new FMyLife());
         registerCommand(new Search());
         registerCommand(new UrbanDictionary());
+        registerCommand(new MCStatus());
     }
 
     public static void registerCommand(Command cmd) {
