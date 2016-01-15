@@ -18,7 +18,7 @@ public class DatabaseUtils {
         return cursor.getString(1);
     }
 
-    public void addConfig(Context context, String property, String value) {
+    public static void addConfig(Context context, String property, String value) {
         SQLiteDatabase db = new Database(context).getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("property", property);
@@ -27,7 +27,7 @@ public class DatabaseUtils {
         db.close();
     }
 
-    public void updateConfig(Context context, String property, String value) {
+    public static void updateConfig(Context context, String property, String value) {
         SQLiteDatabase db = new Database(context).getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("property", property);
@@ -36,7 +36,7 @@ public class DatabaseUtils {
                 new String[]{String.valueOf(property)});
     }
 
-    public void deleteContact(Context context, String property) {
+    public static void deleteContact(Context context, String property) {
         SQLiteDatabase db = new Database(context).getWritableDatabase();
         db.delete("CONFIG", "property" + " = ?",
                 new String[]{property});

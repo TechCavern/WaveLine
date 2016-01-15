@@ -6,6 +6,7 @@ import ml.techcavern.waveline.commands.fun.UrbanDictionary;
 import ml.techcavern.waveline.commands.media.Reddit;
 import ml.techcavern.waveline.commands.minecraft.MCMods;
 import ml.techcavern.waveline.commands.minecraft.MCStatus;
+import ml.techcavern.waveline.commands.misc.Test;
 import ml.techcavern.waveline.commands.reference.Calculate;
 import ml.techcavern.waveline.commands.reference.Define;
 import ml.techcavern.waveline.commands.reference.Question;
@@ -42,6 +43,7 @@ public class LoadUtils {
         registerCommand(new UrbanDictionary());
         registerCommand(new MCStatus());
         registerCommand(new MCMods());
+        registerCommand(new Test());
     }
 
     public static void registerCommand(Command cmd) {
