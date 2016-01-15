@@ -36,7 +36,7 @@ public class DatabaseUtils {
                 new String[]{String.valueOf(property)});
     }
 
-    public static void deleteContact(Context context, String property) {
+    public static void deleteConfig(Context context, String property) {
         SQLiteDatabase db = new Database(context).getWritableDatabase();
         db.delete("CONFIG", "property" + " = ?",
                 new String[]{property});
