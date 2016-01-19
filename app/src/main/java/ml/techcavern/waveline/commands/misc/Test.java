@@ -31,10 +31,14 @@ public class Test extends Command {
         if (args[0].equalsIgnoreCase("test")) {
             DatabaseUtils.addConfig(context, "moo", "moo2");
             GeneralUtils.addCard(new OutputCard(context, DatabaseUtils.getConfig(context, "moo"), DatabaseUtils.getConfig(context, "moo")));
-
         } else {
-            DatabaseUtils.updateConfig(context, "moo", "moo3");
-            GeneralUtils.addCard(new OutputCard(context, DatabaseUtils.getConfig(context, "moo"), DatabaseUtils.getConfig(context, "moo")));
+            if (DatabaseUtils.getConfig(context, "moo") == null) {
+                GeneralUtils.addCard(new OutputCard(context, "null", "null"));
+            } else {
+                DatabaseUtils.updateConfig(context, "moo", "moo3");
+                GeneralUtils.addCard(new OutputCard(context, DatabaseUtils.getConfig(context, "moo"), DatabaseUtils.getConfig(context, "moo")));
+            }
+
         }
     }
 }

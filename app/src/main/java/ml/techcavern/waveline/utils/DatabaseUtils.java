@@ -15,7 +15,13 @@ public class DatabaseUtils {
                 new String[]{property}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
-        return cursor.getString(1);
+        else
+            return null;
+        try {
+            return cursor.getString(1);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public static void addConfig(Context context, String property, String value) {
