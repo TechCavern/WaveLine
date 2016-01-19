@@ -21,12 +21,12 @@ public class Main extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_home);
         Registry.cardList.add(new InputCard(this));
-        CardArrayAdapter cardAdapter = new CardArrayAdapter(this, Registry.cardList);
+        Registry.cardArrayAdapter = new CardArrayAdapter(this, Registry.cardList);
         Registry.listView = (CardListView) this.findViewById(R.id.cards);
         //      Registry.listView.setHasFixedSize(false);
         //    Registry.listView.setLayoutManager(new LinearLayoutManager(this));
         if (Registry.listView != null) {
-            Registry.listView.setAdapter(cardAdapter);
+            Registry.listView.setAdapter(Registry.cardArrayAdapter);
         }
         LoadUtils.registerCommands();
     }

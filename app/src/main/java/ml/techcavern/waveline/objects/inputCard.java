@@ -62,9 +62,8 @@ public class InputCard extends Card {
                         e.printStackTrace();
                         GeneralUtils.addCard(new OutputCard(view.getContext(), "Invalid Command", "Invalid Command"));
                     }
-                    inputText.setText("");
-                    Registry.listView.setVisibility(View.GONE);
-                    Registry.listView.setVisibility(View.VISIBLE);
+                    //     Registry.listView.setVisibility(View.GONE);
+                    //     Registry.listView.setVisibility(View.VISIBLE);
                     return true;
                 }
                 return false;

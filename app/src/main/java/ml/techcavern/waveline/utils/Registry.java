@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
 import it.gmariotti.cardslib.library.view.CardListView;
 import ml.techcavern.waveline.objects.Command;
 
@@ -18,4 +19,5 @@ public class Registry {
     public static final Map<String, Command> commands = new HashMap<>();
     public static final String USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36";
     public static CardListView listView;
+    public static CardArrayAdapter cardArrayAdapter;
 }

@@ -243,19 +243,22 @@ public class GeneralUtils {
 
     public static void addCard(OutputCard card) {
         if (Registry.cardList.size() > 1) {
-            Registry.cardList.get(1).getCardView().setRecycle(true);
-            Registry.cardList.get(1).getCardView().setCard(card);
-            if (Registry.cardList.size() > 2) {
-                for (int i = 2; i < Registry.cardList.size(); i++) {
-                    OutputCard oldcard = (OutputCard) Registry.cardList.get(i - 1);
-                    Registry.cardList.get(i).getCardView().setRecycle(true);
-                    Registry.cardList.get(i).getCardView().setCard(oldcard);
-                }
-            }
             Registry.cardList.add(1, card);
+            /**
+             *             Registry.cardList.get(1).getCardView().setRecycle(true);
+             Registry.cardList.get(1).getCardView().setCard(card);
+             if (Registry.cardList.size() > 2) {
+             for (int i = 2; i < Registry.cardList.size(); i++) {
+             OutputCard oldcard = (OutputCard) Registry.cardList.get(i - 1);
+             Registry.cardList.get(i).getCardView().setRecycle(true);
+             Registry.cardList.get(i).getCardView().setCard(oldcard);
+             }
+             }
+             */
         } else {
             Registry.cardList.add(card);
         }
+        Registry.cardArrayAdapter.notifyDataSetChanged();
     }
 }
 
