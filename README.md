@@ -1,5 +1,5 @@
-WaveLine
-========
+WaveLine [![Packagist](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/TechCavern/WaveLine/blob/master/license.md)
+============================
 Android Information App
 
 Global Config
