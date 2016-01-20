@@ -18,6 +18,7 @@ import java.util.List;
 import ml.techcavern.waveline.annots.CMD;
 import ml.techcavern.waveline.objects.Command;
 import ml.techcavern.waveline.objects.OutputCard;
+import ml.techcavern.waveline.utils.DatabaseUtils;
 import ml.techcavern.waveline.utils.GeneralUtils;
 
 @CMD
@@ -36,8 +37,15 @@ public class Define extends Command {
             ArrayIndex = Integer.parseInt(args[0]) - 1;
             args = ArrayUtils.remove(args, 0);
         }
+        String wordnikapikey;
+        if (DatabaseUtils.getConfig(context, "wordnikapikey") != null)
+            wordnikapikey = DatabaseUtils.getConfig(context, "wordnikapikey");
+        else {
+            GeneralUtils.addCard(new OutputCard(context, "API key undefined", "Please define wordnikapikey in Config"));
+            return;
+        }
         WordApi api = new WordApi();
-        api.getInvoker().addDefaultHeader("api_key", "7279affe358f3e850b00606166d0efd772b7299e57ab5c866");
+        api.getInvoker().addDefaultHeader("api_key", wordnikapikey);
         List<Definition> Defs = api.getDefinitions(args[0].toLowerCase(), null, null, null, null, null, null);
         if (Defs.size() > 0) {
             if (Defs.size() - 1 >= ArrayIndex) {

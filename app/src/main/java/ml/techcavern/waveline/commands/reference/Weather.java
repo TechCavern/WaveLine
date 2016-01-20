@@ -11,6 +11,7 @@ import com.google.gson.JsonObject;
 import ml.techcavern.waveline.annots.CMD;
 import ml.techcavern.waveline.objects.Command;
 import ml.techcavern.waveline.objects.OutputCard;
+import ml.techcavern.waveline.utils.DatabaseUtils;
 import ml.techcavern.waveline.utils.GeneralUtils;
 
 @CMD
@@ -22,6 +23,13 @@ import ml.techcavern.waveline.utils.GeneralUtils;
 
         @Override
         public void onCommand(Context context, String[] args) throws Exception {
+            String wundergroundapikey;
+            if (DatabaseUtils.getConfig(context, "wundergroundapikey") != null)
+                wundergroundapikey = DatabaseUtils.getConfig(context, "wundergroundapikey");
+            else {
+                GeneralUtils.addCard(new OutputCard(context, "API key undefined", "Please define wundergroundapikey in Config"));
+                return;
+            }
             JsonObject weather = GeneralUtils.getJsonObject("http://api.wunderground.com/api/c8e3fc38bfc8400c/conditions/q/" + args[1] + ".json").getAsJsonObject("current_observation");
             if (weather != null) {
                 String City = weather.get("display_location").getAsJsonObject().get("full").getAsString();

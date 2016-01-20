@@ -20,6 +20,7 @@ import org.apache.commons.lang3.StringUtils;
 import ml.techcavern.waveline.annots.CMD;
 import ml.techcavern.waveline.objects.Command;
 import ml.techcavern.waveline.objects.OutputCard;
+import ml.techcavern.waveline.utils.DatabaseUtils;
 import ml.techcavern.waveline.utils.GeneralUtils;
 
 @CMD
@@ -36,6 +37,13 @@ public class Question extends Command {
         if (GeneralUtils.isInteger(args[0])) {
             ArrayIndex = Integer.parseInt(args[0]);
             args = ArrayUtils.remove(args, 0);
+        }
+        String wolframalphaapikey;
+        if (DatabaseUtils.getConfig(context, "wolframalphaapikey") != null)
+            wolframalphaapikey = DatabaseUtils.getConfig(context, "wolframalphaapikey");
+        else {
+            GeneralUtils.addCard(new OutputCard(context, "API key undefined", "Please define wolframalphaapikey in Config"));
+            return;
         }
         WAEngine engine = new WAEngine();
         engine.setAppID("5P3X6V-LR44XJW9V2");
