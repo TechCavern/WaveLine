@@ -1,9 +1,11 @@
 package ml.techcavern.waveline.utils;
 
 import ml.techcavern.waveline.commands.dnsinfo.GeoIP;
+import ml.techcavern.waveline.commands.dnsinfo.Title;
 import ml.techcavern.waveline.commands.fun.FMyLife;
 import ml.techcavern.waveline.commands.fun.UrbanDictionary;
 import ml.techcavern.waveline.commands.media.Reddit;
+import ml.techcavern.waveline.commands.minecraft.MCModStats;
 import ml.techcavern.waveline.commands.minecraft.MCMods;
 import ml.techcavern.waveline.commands.minecraft.MCStatus;
 import ml.techcavern.waveline.commands.misc.Config;
@@ -46,6 +48,8 @@ public class LoadUtils {
         registerCommand(new MCMods());
         registerCommand(new Test());
         registerCommand(new Config());
+        registerCommand(new MCModStats());
+        registerCommand(new Title());
     }
 
     public static void registerCommand(Command cmd) {
