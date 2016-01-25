@@ -26,8 +26,10 @@ public class Title extends Command {
     @Override
     public void onCommand(Context context, String[] args) throws Exception {
         args = ArrayUtils.remove(args, 0);
-        if (!args[0].startsWith("http://") && !args[0].startsWith("https://")) {
-            args[0] = "http://" + args[0];
+        if (args[0].startsWith("http://")) {
+            args[0].replace("http://", "");
+        } else if (args[0].startsWith("https://")) {
+            args[0].replace("https://", "");
         }
         Document doc = Jsoup.connect(args[0]).userAgent(Registry.USER_AGENT).get();
         GeneralUtils.addCard(new OutputCard(context, "Title of " + args[0], doc.title()));

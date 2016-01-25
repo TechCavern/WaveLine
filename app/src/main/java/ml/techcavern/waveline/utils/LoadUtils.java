@@ -1,5 +1,6 @@
 package ml.techcavern.waveline.utils;
 
+import ml.techcavern.waveline.commands.dnsinfo.DNSInfo;
 import ml.techcavern.waveline.commands.dnsinfo.GeoIP;
 import ml.techcavern.waveline.commands.dnsinfo.Title;
 import ml.techcavern.waveline.commands.fun.FMyLife;
@@ -50,6 +51,7 @@ public class LoadUtils {
         registerCommand(new Config());
         registerCommand(new MCModStats());
         registerCommand(new Title());
+        registerCommand(new DNSInfo());
     }
 
     public static void registerCommand(Command cmd) {
