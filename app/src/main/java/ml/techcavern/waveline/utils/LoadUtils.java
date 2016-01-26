@@ -2,6 +2,7 @@ package ml.techcavern.waveline.utils;
 
 import ml.techcavern.waveline.commands.dnsinfo.DNSInfo;
 import ml.techcavern.waveline.commands.dnsinfo.GeoIP;
+import ml.techcavern.waveline.commands.dnsinfo.ISup;
 import ml.techcavern.waveline.commands.dnsinfo.Title;
 import ml.techcavern.waveline.commands.fun.FMyLife;
 import ml.techcavern.waveline.commands.fun.UrbanDictionary;
@@ -52,6 +53,7 @@ public class LoadUtils {
         registerCommand(new MCModStats());
         registerCommand(new Title());
         registerCommand(new DNSInfo());
+        registerCommand(new ISup());
     }
 
     public static void registerCommand(Command cmd) {
