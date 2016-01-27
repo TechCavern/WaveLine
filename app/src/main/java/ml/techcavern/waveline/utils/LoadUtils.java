@@ -6,6 +6,7 @@ import ml.techcavern.waveline.commands.dnsinfo.ISup;
 import ml.techcavern.waveline.commands.dnsinfo.Title;
 import ml.techcavern.waveline.commands.fun.FMyLife;
 import ml.techcavern.waveline.commands.fun.UrbanDictionary;
+import ml.techcavern.waveline.commands.media.Music;
 import ml.techcavern.waveline.commands.media.Reddit;
 import ml.techcavern.waveline.commands.minecraft.MCModStats;
 import ml.techcavern.waveline.commands.minecraft.MCMods;
@@ -54,6 +55,7 @@ public class LoadUtils {
         registerCommand(new Title());
         registerCommand(new DNSInfo());
         registerCommand(new ISup());
+        registerCommand(new Music());
     }
 
     public static void registerCommand(Command cmd) {
