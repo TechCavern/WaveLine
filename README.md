@@ -1,6 +1,6 @@
-WaveLine [![Packagist](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/TechCavern/WaveLine/blob/master/LICENSE.md)
+[Deprecated] WaveLine [![Packagist](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/TechCavern/WaveLine/blob/master/LICENSE.md)
 ============================
-Android Information App
+No longer in development
 
 Global Config
 =================
